@@ -23,13 +23,13 @@
         "issues": "http://github.com/sheadawson/silverstripe-linkable/issues"
     },
     "require": {
-        "silverstripe/vendor-plugin": "^1.0 || ^2.0",
-        "silverstripe/framework": "^4.0 || ^5.0",
-        "unclecheese/display-logic": "*",
-        "embed/embed": "^4.0"
+        "silverstripe/vendor-plugin": "^3",
+        "silverstripe/framework": "^6",
+        "unclecheese/display-logic": "^4",
+        "embed/embed": "^4"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.7"
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
@@ -43,12 +43,18 @@
     "extra": {
         "installer-name": "linkable",
         "branch-alias": {
-            "dev-master": "2.0.x-dev"
+            "dev-master": "3.0.x-dev"
         },
         "expose": [
             "client"
         ]
     },
     "prefer-stable": true,
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "silverstripe/vendor-plugin": true
+        }
+    }
 }

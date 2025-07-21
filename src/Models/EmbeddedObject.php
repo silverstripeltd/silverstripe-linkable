@@ -102,7 +102,7 @@ class EmbeddedObject extends DataObject
     /**
      * @return string
      */
-    public function forTemplate()
+    public function forTemplate(): string
     {
         switch ($this->Type) {
             case 'video':
@@ -110,7 +110,7 @@ class EmbeddedObject extends DataObject
                 if ($this->ExtraClass) {
                     return "<div class='$this->ExtraClass'>$this->EmbedHTML</div>";
                 } else {
-                    return $this->EmbedHTML;
+                    return (string)$this->EmbedHTML;
                 }
                 break;
             case 'link':
