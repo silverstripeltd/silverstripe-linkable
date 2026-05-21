@@ -170,8 +170,8 @@ _jquery2.default.entwine('ss', function ($) {
       });
 
       this.getDialog().on('submit', 'form', function () {
-        var options = {};
-        options.success = function (response) {
+        var $form = $(this);
+        var onSuccess = function (response) {
           if ($(response).is('.field')) {
             self.getDialog().empty().dialog('close');
             self.parents('.field:first').replaceWith(response);
@@ -181,7 +181,12 @@ _jquery2.default.entwine('ss', function ($) {
           }
         };
 
-        $(this).ajaxSubmit(options);
+        $.ajax({
+          type: $form.attr('method') || 'POST',
+          url: $form.attr('action'),
+          data: $form.serialize(),
+          success: onSuccess
+        });
 
         return false;
       });
