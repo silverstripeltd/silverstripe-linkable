@@ -10,7 +10,7 @@ use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\Form;
 use SilverStripe\Forms\HiddenField;
-use SilverStripe\ORM\ValidationException;
+use SilverStripe\Core\Validation\ValidationException;
 use SilverStripe\Control\Controller;
 use SilverStripe\Forms\TextField;
 
@@ -153,12 +153,12 @@ class LinkField extends TextField
     {
         $requestID = Controller::curr()->request->requestVar('LinkID');
 
-        if ($requestID == '0' && !$this->Value()) {
+        if ($requestID == '0' && !$this->getValue()) {
             return null;
         }
 
         if (!$this->linkObject) {
-            $id = $this->Value() ? $this->Value() : $requestID;
+            $id = $this->getValue() ? $this->getValue() : $requestID;
 
             if ((int)$id) {
                 $this->linkObject = Link::get()->byID($id);
